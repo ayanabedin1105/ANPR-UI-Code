@@ -1,0 +1,1 @@
+A simple ANPR website that uses the python script to detect ANPR system.
