@@ -3,176 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup ANPR</title>
+    <title>Firebase Signup Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-signup.css') }}" />
 
-    <!-- AJAX library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- CSS -->
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .container {
-        max-width: 500px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-      h1 {
-        color: #333;
-      }
-
-      .signup-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      .signup-container h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .alert {
-        text-align: center;
-        padding: 10px;
-        background: rgb(168, 240, 177);
-        color: green;
-        margin-bottom: 10px;
-        display: none;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-      .form-group input[type="text"],
-      .form-group input[type="password"] .form-group input[type="repassword"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      .form-group input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #ce4257;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-      }
-      .form-group input[type="submit"]:hover {
-        background-color: #a70820;
-      }
-    </style>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-      <h1>Automatic Number Plate Recognition (ANPR) System</h1>
-      <div class="signup-container">
-        <h2>Signup Page</h2>
-        <form id="signupForm">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <div class="form-group">
-            <label for="confirmPassword">Retype Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <button id="signUp">Create Account</button>
-          </div>
-        </form>
-      </div>
-      <p>Already have an account? <a href="/login">Login</a></p>
+      <h2>Signup</h2>
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" name="first-name" required />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" name="last-name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          />
+        </div>
+        <button type="submit">SIGN UP</button>
+        <p id="form-message" class="form-message"></p>
+      </form>
+      <!-- Add paragraph for sign in text -->
+      <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
     </div>
-    <!-- JavaScript -->
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyAhVSU7QTMP-4MiFStqaWQMZR9RT1-Kgyk",
-        authDomain: "anpr-data.firebaseapp.com",
-        databaseURL: "https://anpr-data-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "anpr-data",
-        storageBucket: "anpr-data.appspot.com",
-        messagingSenderId: "322530228772",
-        appId: "1:322530228772:web:74a312647e7f3d591876b1",
-        measurementId: "G-K133MM61G6",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      const database = getDatabase(app);
-      const auth = getAuth(app);
-
-      signUp.addEventListener("click", (e) => {
-        e.preventDefault();
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-          console.log("Error: Passwords do not match.");
-          return;
-        }
-
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // Signed up
-            const user = userCredential.user;
-            console.log("User created!");
-            // ...
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-
-            console.log(errorMessage);
-            // ..
-          });
-      });
-    </script>
+    <script type="module" src="{{ url_for('static', filename='js/app-signup.js') }}"></script>
   </body>
 </html>
