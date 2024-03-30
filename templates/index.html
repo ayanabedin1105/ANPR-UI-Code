@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ANPR System</title>
 
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+
     <!-- AJAX library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -13,7 +16,9 @@
   </head>
   <body>
     <div class="container">
+      <h2 id="greeting" class="greeting"></h2> <!-- Added class="greeting" -->
       <h1>Automatic Number Plate Recognition (ANPR) System</h1>
+      
       <video autoplay playsinline id="videoElement"></video>
 
       <div class="btn-centered">
