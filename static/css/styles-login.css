@@ -6,6 +6,20 @@ body {
   align-items: center; /* Center vertically */
 }
 
+.wrapper {
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack containers vertically */
+  align-items: center; /* Center containers horizontally */
+  justify-content: center; /* Center containers vertically */
+  height: 100vh; /* Ensure full viewport height */
+}
+
+.heading-container {
+  width: 80%; /* Occupy the full width of the parent container */
+  text-align: center; /* Center the text horizontally */
+  margin-bottom: 20px; /* Add some space between the heading and the form */
+}
+
 .container {
   max-width: 400px; /* Adjust the maximum width as needed */
   width: 60%; /* Optional: You can also specify a percentage width */
