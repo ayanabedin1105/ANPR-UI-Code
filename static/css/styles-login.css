@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   height: 100vh; /* Ensure full height */
@@ -26,6 +31,9 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  filter: drop-shadow(5px 5px 5px #afafaf);
+  background-color: white;
+  border-color: #ce4257;
 }
 
 .container p {

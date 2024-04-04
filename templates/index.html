@@ -16,16 +16,64 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("{{ url_for('static', filename='images/background.png') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .container {
+        max-width: 500px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        boredr-width: 1px solid #ce4257;
+      }
+
+      h1 {
+        color: #333;
+      }
+      #uploadInput {
+        display: none;
+      }
+      .btn-centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vh;
+      }
+      button {
+        display: block;
+        padding: 10px;
+        background-color: #ce4257;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #a70820;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>Automatic Number Plate Recognition (ANPR) System</h1>
 
       <video autoplay playsinline id="videoElement"></video>
+      <div id="userEmail"></div>
 
       <div class="btn-centered">
         <button id="runScriptBtn">Click Me!</button>
@@ -33,6 +81,9 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
   </body>
 </html>
