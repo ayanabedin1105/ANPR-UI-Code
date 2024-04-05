@@ -16,6 +16,17 @@
       href="{{ url_for('static', filename='favicon.png') }}"
     />
 
+    <style>
+      body {
+        height: 100vh;
+        background-image: url("{{ url_for('static', filename='images/background-login-signup.png') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+    </style>
+
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
