@@ -30,7 +30,27 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        position: relative;
       }
+
+      #userEmail {
+        position: absolute;
+        top: 10px; /* Adjust top position as needed */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Adjust background color and transparency */
+        padding: 20px 100px; /* Adjust padding as needed */
+        border-radius: 10px; /* Adjust border radius as needed */
+        margin-top: 150px;
+        font-size: 16px; /* Adjust font size as needed */
+        border: 1px solid #ce4257;
+      }
+
       .container {
         max-width: 500px;
         padding: 20px;
@@ -39,7 +59,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         position: relative;
-        boredr-width: 1px solid #ce4257;
+        border-width: 1px solid #ce4257;
       }
 
       h1 {
@@ -66,14 +86,36 @@
       button:hover {
         background-color: #a70820;
       }
+
+      .logout-btn-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #logoutBtn {
+        padding: 10px;
+        background-color: #ce4257;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+
+      #logoutBtn:hover {
+        background-color: #a70820;
+      }
     </style>
   </head>
   <body>
+    <div id="userEmail"></div>
+    <!-- Positioning container for logout button -->
+    <div class="logout-btn-container">
+      <button id="logoutBtn">Logout</button>
+    </div>
     <div class="container">
       <h1>Automatic Number Plate Recognition (ANPR) System</h1>
-
-      <video autoplay playsinline id="videoElement"></video>
-      <div id="userEmail"></div>
 
       <div class="btn-centered">
         <button id="runScriptBtn">Click Me!</button>
@@ -81,9 +123,53 @@
     </div>
 
     <!-- JavaScript -->
-    <script
-      type="module"
-      src="{{ url_for('static', filename='js/app.js') }}"
-    ></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAhVSU7QTMP-4MiFStqaWQMZR9RT1-Kgyk",
+        authDomain: "anpr-data.firebaseapp.com",
+        databaseURL:
+          "https://anpr-data-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "anpr-data",
+        storageBucket: "anpr-data.appspot.com",
+        messagingSenderId: "322530228772",
+        appId: "1:322530228772:web:74a312647e7f3d591876b1",
+        measurementId: "G-K133MM61G6",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+
+      // Function to update userEmail div with user's email
+      function updateUserEmail() {
+        const userEmailDiv = document.getElementById("userEmail");
+
+        // Check if user is logged in
+        const user = auth.currentUser;
+        if (user) {
+          const userEmail = user.email;
+          userEmailDiv.textContent = "Logged in as: " + userEmail;
+        } else {
+          userEmailDiv.textContent = "Not logged in";
+        }
+      }
+      onAuthStateChanged(auth, (user) => {
+        updateUserEmail();
+      });
+    </script>
   </body>
 </html>

@@ -47,4 +47,13 @@ def my_function():
                 cv2.imshow("Results", img)
                 cv2.waitKey(500)
                 count += 1
+        # Check for the 'X' button press to close the application
+        if cv2.getWindowProperty("Result", cv2.WND_PROP_VISIBLE) < 1:
+            break
+        
+    # Release the camera and close OpenCV windows
+    cap.release()
+    cv2.destroyAllWindows()
+    
     return "Python script executed!"
+
