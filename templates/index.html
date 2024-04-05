@@ -170,6 +170,22 @@
       onAuthStateChanged(auth, (user) => {
         updateUserEmail();
       });
+
+      // Logout User
+      const logoutBtn = document.querySelector("#logoutBtn");
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth
+          .signOut()
+          .then(() => {
+            console.log("User signed out!");
+            window.location.href = "/login"; // Redirect to login page
+          })
+          .catch((error) => {
+            console.error("Logout error:", error);
+            // Handle error: Display error message or perform other actions as needed
+          });
+      });
     </script>
   </body>
 </html>
