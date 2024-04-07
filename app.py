@@ -21,6 +21,11 @@ def login():
 def index():
     return render_template('index.html')
 
+@app.route('/plate_list')
+def plate_list():
+    # Render the view_plates.html template
+    return render_template('plate_list.html')
+
 @app.route('/run_script')
 def run_script():
     result = my_function()

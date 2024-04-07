@@ -106,10 +106,34 @@
       #logoutBtn:hover {
         background-color: #a70820;
       }
+
+      .list-btn-container {
+        position: absolute;
+        top: 20px;
+        right: 100px;
+      }
+
+      #listBtn {
+        padding: 10px;
+        background-color: #ce4257;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+
+      #listBtn:hover {
+        background-color: #a70820;
+      }
     </style>
   </head>
   <body>
     <div id="userEmail"></div>
+    <!-- Positioning container for list button -->
+    <div class="list-btn-container">
+      <button id="listBtn">View Plates</button>
+    </div>
     <!-- Positioning container for logout button -->
     <div class="logout-btn-container">
       <button id="logoutBtn">Logout</button>
@@ -185,6 +209,15 @@
             console.error("Logout error:", error);
             // Handle error: Display error message or perform other actions as needed
           });
+      });
+
+      // Select the View Plates button
+      const viewPlatesBtn = document.querySelector("#listBtn");
+
+      // Add event listener for the button click
+      viewPlatesBtn.addEventListener("click", () => {
+        // Redirect to the desired page
+        window.location.href = "/plate_list"; 
       });
     </script>
   </body>
