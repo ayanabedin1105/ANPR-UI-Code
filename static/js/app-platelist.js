@@ -42,7 +42,6 @@ onValue(dbRef, (snapshot) => {
     // Create list item element
     var listItem = document.createElement("li");
 
-
     // Create paragraph element for detected text
     var textParagraph = document.createElement("p");
     textParagraph.textContent = "Number Plate: " + detectedText;
@@ -61,10 +60,10 @@ onValue(dbRef, (snapshot) => {
 });
 
 // JavaScript function to go back to the previous page
- const goBackBtn = document.querySelector("#back-btn");
+const goBackBtn = document.querySelector("#back-btn");
 
- // Add event listener for the button click
- goBackBtn.addEventListener("click", () => {
-   // Redirect to the desired page
-   window.location.href = "/index"; 
- });
+// Add event listener for the button click
+goBackBtn.addEventListener("click", () => {
+  // Redirect to the desired page
+  window.location.href = "/index";
+});
