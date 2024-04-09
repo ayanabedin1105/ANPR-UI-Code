@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parking Management System</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles-parkinglot.css') }}"
+    />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Favicon-->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='favicon.png') }}"
+    />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-image: url("{{ url_for('static', filename='images/parking-lot.jpg') }}");
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Parking Management System</h1>
+    <div class="parking-lot">
+      <div class="row">
+        <!-- First row of slots -->
+        <div class="parking-slot vacant">1</div>
+        <div class="parking-slot vacant">2</div>
+        <div class="parking-slot vacant">3</div>
+        <div class="parking-slot vacant">4</div>
+        <div class="parking-slot vacant">5</div>
+      </div>
+      <div class="divider"></div>
+      <!-- Yellow line between rows -->
+      <div class="row">
+        <!-- Second row of slots -->
+        <div class="parking-slot vacant">6</div>
+        <div class="parking-slot vacant">7</div>
+        <div class="parking-slot vacant">8</div>
+        <div class="parking-slot vacant">9</div>
+        <div class="parking-slot vacant">10</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-box occupied-box"></div>
+      <span>Occupied</span>
+      <div class="legend-box vacant-box"></div>
+      <span>Vacant</span>
+    </div>
+
+    <!--Back Button-->
+    <div class="back-btn-container">
+      <button class="back-btn" id="back-btn">Back</button>
+    </div>
+
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/app-parkinglot.js') }}"
+    ></script>
+    <script>
+      // Function to refresh the page every 5 seconds
+      setInterval(() => {
+        location.reload();
+      }, 5000);
+    </script>
+  </body>
+</html>

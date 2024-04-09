@@ -126,10 +126,35 @@
       #listBtn:hover {
         background-color: #a70820;
       }
+
+      .parklot-btn-container {
+        position: absolute;
+        top: 20px;
+        right: 220px;
+      }
+
+      #parklotBtn {
+        padding: 10px;
+        background-color: #ce4257;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+
+      #parklotBtn:hover {
+        background-color: #a70820;
+      }
     </style>
   </head>
   <body>
     <div id="userEmail"></div>
+    <!-- Positioning container for parking lot button -->
+    <div class="parklot-btn-container">
+      <button id="parklotBtn">Parking Lot</button>
+    </div>
+
     <!-- Positioning container for list button -->
     <div class="list-btn-container">
       <button id="listBtn">View Plates</button>
@@ -214,10 +239,19 @@
       // Select the View Plates button
       const viewPlatesBtn = document.querySelector("#listBtn");
 
+      //Select the view plates for Parking lot button
+      const viewParklotBtn = document.querySelector("#parklotBtn");
+
       // Add event listener for the button click
       viewPlatesBtn.addEventListener("click", () => {
         // Redirect to the desired page
-        window.location.href = "/plate_list"; 
+        window.location.href = "/plate_list";
+      });
+
+      // Add event listener for the button click
+      viewParklotBtn.addEventListener("click", () => {
+        // Redirect to the desired page
+        window.location.href = "/park_lot";
       });
     </script>
   </body>

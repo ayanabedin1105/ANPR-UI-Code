@@ -9,22 +9,33 @@ app = Flask(__name__)
 def home():
     return redirect(url_for('signup'))
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+
 @app.route('/index')
 def index():
     return render_template('index.html')
+
 
 @app.route('/plate_list')
 def plate_list():
     # Render the view_plates.html template
     return render_template('plate_list.html')
+
+
+@app.route('/park_lot')
+def park_lot():
+    # Render the view_plates.html template
+    return render_template('parking-slot.html')
+
 
 @app.route('/run_script')
 def run_script():

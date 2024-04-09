@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("../images/parking-lot.jpg");
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+.parking-lot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 10px solid white; /* Yellow bar between the two rows */
+  border-bottom: 10px solid white; /* Yellow bar between the two rows */
+}
+.row {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px; /* Adjust to align slots with the white bars */
+  margin-bottom: -5px; /* Adjust to align slots with the white bars */
+}
+.parking-slot {
+  width: 100px;
+  height: 200px;
+  border: 7px solid white; /* Yellow border */
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: white;
+  writing-mode: vertical-rl; /* Rotate the text 90 degrees clockwise */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.divider {
+  width: 100%;
+  border-top: 10px solid white; /* Yellow bar between the two rows */
+}
+.occupied {
+  background-color: #d34242; /* red */
+}
+.vacant {
+  background-color: #168616; /*  green */
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.legend-box {
+  width: 50px;
+  height: 20px;
+  margin: 0 10px;
+}
+.occupied-box {
+  background-color: #d34242;
+}
+.vacant-box {
+  background-color: #168616;
+}
+
+.back-btn-container {
+  text-align: center;
+  margin-top: 50px;
+}
+.back-btn {
+  padding: 10px 20px;
+  background-color: #ce4257;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.back-btn:hover {
+  background-color: #a70820;
+}
