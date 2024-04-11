@@ -7,6 +7,7 @@ import firebase_admin
 from firebase_admin import credentials, db
 import datetime
 
+#Seperate venv for python run
 
 def my_function_ocr():
     # Initialize firebase admin SDK with your Firebase project credentials
