@@ -11,7 +11,7 @@ import datetime
 def my_function_ocr():
     # Initialize firebase admin SDK with your Firebase project credentials
     cred = credentials.Certificate(
-        r"C:\Users\abedi\Downloads\College TU856 DT228\College Year 4\Final Year Project\Codes\UI_code\firebase_certificate\anpr-data-firebase-adminsdk-w26xb-2441736885.json")
+        r"C:\Users\abedi\Downloads\College TU856 DT228\College Year 4\Final Year Project\Codes\Parking-Management\anpr-data-firebase-adminsdk-w26xb-2441736885.json")
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://anpr-data-default-rtdb.europe-west1.firebasedatabase.app'
     })
