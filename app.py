@@ -33,8 +33,13 @@ def plate_list():
 
 @app.route('/park_lot')
 def park_lot():
-    # Render the view_plates.html template
+    # Render the parking-slot.html template
     return render_template('parking-slot.html')
+
+@app.route('/ocr')
+def ocr():
+    # Render the parking-slot.html template
+    return render_template('ocr-page.html')
 
 
 @app.route('/run_script')

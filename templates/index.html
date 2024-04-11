@@ -102,7 +102,7 @@
         font-size: 12px;
         white-space: nowrap;
       }
-      
+
       button {
         display: block;
         padding: 10px;
@@ -269,8 +269,13 @@
       // Select the View Plates button
       const viewPlatesBtn = document.querySelector("#listBtn");
 
-      //Select the view plates for Parking lot button
+      //Select the Parking Lot button 
       const viewParklotBtn = document.querySelector("#parklotBtn");
+
+      //Select the Perform OCR button
+      const performOCRBtn = document.querySelector("#runOCRBtn");
+
+
 
       // Add event listener for the button click
       viewPlatesBtn.addEventListener("click", () => {
@@ -282,6 +287,12 @@
       viewParklotBtn.addEventListener("click", () => {
         // Redirect to the desired page
         window.location.href = "/park_lot";
+      });
+
+      // Add event listener for the button click
+      performOCRBtn.addEventListener("click", () => {
+        // Redirect to the desired page
+        window.location.href = "/ocr";
       });
     </script>
   </body>
