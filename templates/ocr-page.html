@@ -53,6 +53,7 @@
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 10px;
         padding: 20px;
+        border: 1px solid #ccc;
       }
       .progress {
         width: 100%;
@@ -60,6 +61,7 @@
         background-color: #f3f3f3;
         border-radius: 5px;
         overflow: hidden;
+        border: 1px solid black;
       }
       .progress-bar {
         height: 100%;
@@ -79,6 +81,27 @@
         border-radius: 5px;
         cursor: pointer;
       }
+
+      .back-btn-container {
+        margin-top: 20px;
+        position: absolute;
+        bottom: 140px; /* Adjust this value to position the button higher or lower */
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+      .back-btn {
+        padding: 10px 20px;
+        background-color: #ce4257;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .back-btn:hover {
+        background-color: #a70820;
+      }
     </style>
   </head>
   <body>
@@ -90,6 +113,10 @@
         </div>
       </div>
       <button id="ocrButton">START</button>
+    </div>
+
+    <div class="back-btn-container">
+      <button class="back-btn" id="back-btn">< Back</button>
     </div>
     <script>
       document
@@ -104,6 +131,15 @@
             }
           };
         });
+
+      // JavaScript function to go back to the previous page
+      const goBackBtn = document.querySelector("#back-btn");
+
+      // Add event listener for the button click
+      goBackBtn.addEventListener("click", () => {
+        // Redirect to the desired page
+        window.location.href = "/index";
+      });
     </script>
   </body>
 </html>

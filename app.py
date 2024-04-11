@@ -1,8 +1,12 @@
 from flask import Flask, render_template, redirect, url_for
 from number_plate_test1 import my_function
+from ocr_regex import my_function_ocr
+import subprocess
 
 app = Flask(__name__)
 
+# Define the path to the virtual environment
+virtualenv_path = '/path/to/your/virtual/environment/bin/activate'
 
 # Define routes for signup, login, and index pages
 @app.route('/')
@@ -45,6 +49,12 @@ def ocr():
 @app.route('/run_script')
 def run_script():
     result = my_function()
+    return result
+
+# Run the OCR code
+@app.route('/run_ocr')
+def run_ocr():
+    result = my_function_ocr()
     return result
 
 
