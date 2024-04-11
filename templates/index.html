@@ -74,6 +74,35 @@
         align-items: center;
         height: 10vh;
       }
+
+      .btn-centered button {
+        margin-left: 10px;
+      }
+
+      .btn-centered button#runScriptBtn {
+        padding: 10px;
+        background-color: #ce4257;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: relative; /* Added position relative */
+      }
+
+      .btn-centered button#runScriptBtn:hover::after {
+        content: "Open Camera"; /* Text to display on hover */
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+      
       button {
         display: block;
         padding: 10px;
@@ -168,6 +197,7 @@
 
       <div class="btn-centered">
         <button id="runScriptBtn">Click Me!</button>
+        <button id="runOCRBtn">Perform OCR</button>
       </div>
     </div>
 
