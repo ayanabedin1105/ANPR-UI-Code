@@ -4,6 +4,7 @@ import {
   getDatabase,
   ref,
   onValue,
+  set,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -47,6 +48,30 @@ function getDetectedPlatesFromFirebase() {
     );
   });
 }
+
+//Function to remove the parking cars
+// Function to remove all plates from the parking slots and Firebase database
+async function removeAllPlates() {
+  try {
+    // Clear the parking slots visually
+    const parkingSlots = document.querySelectorAll(".parking-slot");
+    parkingSlots.forEach((slot) => {
+      slot.textContent = "";
+      slot.classList.remove("occupied");
+      slot.classList.add("vacant");
+    });
+
+    // Remove all plates from Firebase database
+    await set(dbRef, null);
+    console.log("All plates removed from Firebase database");
+  } catch (error) {
+    console.error("Error removing plates:", error);
+  }
+}
+
+// Call the function to remove all plates when the button is clicked
+const removeAllBtn = document.getElementById("remove-btn");
+removeAllBtn.addEventListener("click", removeAllPlates);
 
 // Function to fill parking slots with detected number plates
 async function fillParkingSlots() {

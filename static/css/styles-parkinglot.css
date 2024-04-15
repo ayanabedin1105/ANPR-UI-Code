@@ -84,6 +84,21 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+.remove-btn {
+  padding: 10px 20px;
+  margin-left: 30px;
+  background-color: #ce4257;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 .back-btn:hover {
+  background-color: #a70820;
+}
+
+.remove-btn:hover {
   background-color: #a70820;
 }
